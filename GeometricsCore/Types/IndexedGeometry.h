@@ -7,7 +7,8 @@
 
 #include <vector>
 
-namespace Geometric
+namespace sw {
+namespace geometrics
 {
 
 
@@ -22,4 +23,6 @@ struct IndexedGeometry
 };
 
 
-}
+}	// geometrics
+}	// sw
+

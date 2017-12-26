@@ -4,6 +4,8 @@
 @author nieznanysprawiciel
 @copyright File is part of graphic engine SWEngine.
 */
+
+
 #include "Converter.h"
 
 #include <algorithm>
@@ -13,7 +15,8 @@
 
 
 
-namespace Geometric
+namespace sw {
+namespace geometrics
 {
 
 /**@brief Functor for comparing indicies which reference verticies in specifued vector.
@@ -25,10 +28,10 @@ class VertexComparator
 private:
 	const std::vector< VertexType >&	m_verticies;
 public:
-    VertexComparator ( const std::vector< VertexType >& verts ) : m_verticies( verts ) {}
+	VertexComparator ( const std::vector< VertexType >& verts ) : m_verticies( verts ) {}
 
 
-    bool operator() ( int i, int j )
+	bool operator() ( int i, int j )
 	{
 		if( m_verticies[ i ] < m_verticies[ j ] )
 			return true;
@@ -57,7 +60,7 @@ inline std::vector< IndexType >								Converter::MakeIndexed( const std::vector
 	indicies.resize( srcVerticies.size() );	// Sincve we have triangle list topology, new index buffer will have the same size as srcVerticies.
 
 	assert( dstVerticies.size() < std::numeric_limits< IndexType >::max() );
-	IndexType vertexOffset = static_cast< IndexType >( dstVerticies.size() );
+	IndexType vertexOffset = static_cast<IndexType>( dstVerticies.size() );
 
 	std::vector< IndexType > sortedIndicies;
 	sortedIndicies.resize( srcVerticies.size() );
@@ -94,5 +97,6 @@ inline std::vector< IndexType >								Converter::MakeIndexed( const std::vector
 	return indicies;
 }
 
-}
+}	// geometrics
+}	// sw
 
